@@ -1,0 +1,7 @@
+docker run -dit     --name=tiago     --privileged     --gpus all     -e NVIDIA_DRIVER_CAPABILITIES=all     -e NVIDIA_VISIBLE_DEVICES=all     -e DISPLAY=$DISPLAY     -e QT_X11_NO_MITSHM=1     -v /tmp/.X11-unix:/tmp/.X11-unix:rw     -v /home/ros/tiago:/home/ros/workspace:rw     -w /home/ros/workspace     osrf/ros:jazzy-desktop-full
+
+docker exec -it tiago /bin/bash -c "echo 'source /opt/ros/jazzy/setup.bash' >> ~/.bashrc"
+
+docker exec -it tiago /bin/bash -c "echo 'if [ -f /home/ros/workspace/install/setup.bash ]; then source /home/ros/workspace/install/setup.bash; fi' >> ~/.bashrc"
+
+docker exec -it tiago bash
